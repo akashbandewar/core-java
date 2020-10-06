@@ -1,0 +1,132 @@
+Q60
+
+import java.util.Scanner;
+
+interface StudentFee{
+	int getFee();
+}
+
+public class Q60 implements StudentFee {
+	
+	static String name;
+	int fee;
+	
+	public static void main(String[] args) {
+		System.out.println("Enter name : ");
+		Scanner sc = new Scanner(System.in);
+		Q60 q = new Q60();
+		q.name = sc.next();
+		q.fee = q.getFee();
+		System.out.println("Name : "+q.name+" Fee : "+q.fee);
+	}
+
+	@Override
+	public int getFee() {
+		System.out.println("Enter the Fee : ");
+		Scanner sc = new Scanner(System.in);
+		fee = sc.nextInt();
+		if(fee<0) {
+			try {
+				throw new Exception("InvalidFeeException");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				System.out.println(e);
+			}
+		}else {
+		return fee;
+		}
+		return 0;
+	}
+
+}
+
+
+==============================================================================
+
+Q61-
+import java.util.Scanner;
+
+class MyThread extends Thread {
+	int num;
+	
+	public MyThread(int num) {
+		super();
+		this.num = num;
+	}
+
+	public void run() {
+		for(int i=1;i<=num;i++) {
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.print("*"+" ");
+		}
+		System.out.println("\nEND");
+	}
+}
+
+public class Q61 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the number : ");
+		int n = sc.nextInt();
+		MyThread m = new MyThread(n);
+		m.start();
+	}
+
+}
+=================================================================================
+
+Q62-
+import java.util.Scanner;
+
+public class Q62{
+	
+	public static void main(String[] args) {
+		int n;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the number : ");
+		n=sc.nextInt();
+		MyThread t = new MyThread(n);
+		
+		t.run();
+		
+	}
+}
+
+class MyThread implements Runnable{
+	
+	
+	int n;
+	public MyThread(int n) {
+		super();
+		this.n = n;
+	}
+
+	@Override
+	public void run() {
+		int i,m=0,flag=0;      
+		m=n/2;      
+		if(n==0||n==1){  
+		   System.out.println(n+" is not prime number");      
+		}else{  
+		   for(i=2;i<=m;i++){      
+			   if(n%i==0){      
+				   	System.out.println(n+" is not prime number");      
+				   	flag=1;      
+				   	break;      
+			   }      
+		   }      
+		   if(flag==0)  { 
+			   System.out.println(n+" is prime number"); 
+		   }  
+	}
+   }
+}
+
+-----------------------------------------------------------ENd-----------------------------------
+
